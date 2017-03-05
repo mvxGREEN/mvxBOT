@@ -5,9 +5,14 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/CSSA Bot$/;
+      botRegex = /^\/CSSA Bot$/,
+      hiRegex = /^hi$/i;
 
   if(request.text && botRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage();
+    this.res.end();
+  } else if(request.text && hiRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
