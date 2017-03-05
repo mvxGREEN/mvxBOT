@@ -10,11 +10,11 @@ function respond() {
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(0);
     this.res.end();
   } else if(request.text && hiRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(1);
     this.res.end();
   } else {
     console.log("don't care");
@@ -23,10 +23,16 @@ function respond() {
   }
 }
 
-function postMessage() {
+function postMessage(case) {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  if(case == 0) {
+    botResponse = cool();
+  } else if(case == 1) {
+    botResponse = "hi";
+  } else {
+    botResponse = "I dont't know."
+  }
 
   options = {
     hostname: 'api.groupme.com',
