@@ -3,7 +3,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /\/CSSA Bot/,
+      botRegex = /CSSA Bot/i,
       hiRegex = /hi/i;
 
   if(request.text && botRegex.test(request.text)) {
