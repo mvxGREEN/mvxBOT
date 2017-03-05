@@ -3,11 +3,16 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/CSSA Bot$/;
+      botRegex = /^\/CSSA Bot$/,
+      hiRegex = /^hi$/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(":)");
+    this.res.end();
+  } else if(request.text && hiRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Hi");
     this.res.end();
   } else {
     console.log("don't care");
@@ -16,10 +21,8 @@ function respond() {
   }
 }
 
-function postMessage() {
-  var botResponse, options, body, botReq;
-
-  botResponse = "Hi";
+function postMessage(botResponse) {
+  var options, body, botReq;
 
   options = {
     hostname: 'api.groupme.com',
