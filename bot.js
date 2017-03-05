@@ -12,7 +12,7 @@ function respond() {
     this.res.end();
   } else if(request.text && hiRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("Hi");
+    postMessage("Hello");
     this.res.end();
   } else {
     console.log("don't care");
