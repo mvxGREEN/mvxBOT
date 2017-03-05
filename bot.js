@@ -3,20 +3,11 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
-var botResponse = "Ok";
-
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/CSSA Bot$/,
-      hiRegex = /^hi$/i;
+      botRegex = /^\/CSSA Bot$/;
 
   if(request.text && botRegex.test(request.text)) {
-    botResponse = cool();
-    this.res.writeHead(200);
-    postMessage();
-    this.res.end();
-  } else if(request.text && hiRegex.test(request.text)) {
-    botResponse = "Hi";
     this.res.writeHead(200);
     postMessage();
     this.res.end();
@@ -27,8 +18,10 @@ function respond() {
   }
 }
 
-function postMessage(case) {
-  var options, body, botReq;
+function postMessage() {
+  var botResponse, options, body, botReq;
+
+  botResponse = cool();
 
   options = {
     hostname: 'api.groupme.com',
