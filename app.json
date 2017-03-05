@@ -1,7 +1,7 @@
 {
-  "name": "Cool guy bot",
+  "name": "CSSA Bot",
   "description": "Basic Groupme Bot written in Node",
-  "repository": "https://github.com/petemcgrath/cool-guy-bot",
-  "logo": "http://www.tailgate365.com/wp-content/uploads/2011/06/tom-hanks-906.jpg",
+  "repository": "https://github.com/sw8lde/CSSABot",
+  "logo": "https://i.groupme.com/1152x864.jpeg.fb7dc343b4424ffea9d558bd76c84dbe",
   "keywords": []
 }
