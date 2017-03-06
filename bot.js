@@ -18,7 +18,7 @@ function respond() {
     this.res.end();
   } else if(request.text && allRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(mention.all);
+    postMessage(mention.all());
     this.res.end();
   } else {
     console.log("don't care");
