@@ -2,4 +2,4 @@ function all() {
     return "mention everyone"
 }
 
-module.exports = all();
+module.exports.all = all;
