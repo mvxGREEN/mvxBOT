@@ -1,10 +1,12 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
+var mention = require('./mention.js');
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /CSSA Bot/i,
-      hiRegex = /hi/i;
+      botRegex = /(^|\s)CSSA Bot(\s|$)/i,
+      hiRegex = /(^|\s)hi(\s|$)/i,
+      allRegex = /(^|\s)all(\s|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -13,6 +15,10 @@ function respond() {
   } else if(request.text && hiRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("Hello");
+    this.res.end();
+  } else if(request.text && allRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage(mention.all());
     this.res.end();
   } else {
     console.log("don't care");
@@ -24,6 +30,10 @@ function respond() {
 function postMessage(botResponse) {
   var options, body, botReq;
 
+  if(typeof botResponse === "undefined") {
+    botResponse = "I don't know.";
+  }
+  
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
