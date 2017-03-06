@@ -1,5 +1,5 @@
-function all() {
+var all = function() {
     return "mention everyone"
 }
 
-module.exports.all = all;
+exports.all = all;
