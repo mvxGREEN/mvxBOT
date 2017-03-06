@@ -1,6 +1,6 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
-var mention = require('./mention.js');
+var all = require('./mention.js').all;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -18,7 +18,7 @@ function respond() {
     this.res.end();
   } else if(request.text && allRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(mention.all());
+    postMessage(all);
     this.res.end();
   } else {
     console.log("don't care");
