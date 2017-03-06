@@ -1,6 +1,6 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
-var mention = require('./mention');
+var mention = require('./mention.js');
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
