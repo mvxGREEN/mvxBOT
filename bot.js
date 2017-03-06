@@ -24,6 +24,10 @@ function respond() {
 function postMessage(botResponse) {
   var options, body, botReq;
 
+  if(typeof botResponse === "undefined") {
+    botResponse = "I don't know.";
+  }
+  
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
