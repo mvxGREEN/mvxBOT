@@ -7,7 +7,8 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(^|.)CSSA Bot(.|$)/i,
       mentionRegex = /(^|.)(@all|@everyone)(.|$)/i
-      statsRegex = /(^|.)@stats(.|$)/i;
+      statsRegex = /(^|.)@stats(.|$)/i
+      groupIdRegex = /(^|.)@groupId(.|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -17,9 +18,9 @@ function respond() {
     this.res.writeHead(200);
     postMessage(mention.all());
     this.res.end();
-  } else if(request.text && statsRegex.test(request.text)) {
+  } else if(request.text && groupIdRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(find.stats());
+    postMessage(find.groupId());
     this.res.end();
   } else {
     console.log("don't care");
