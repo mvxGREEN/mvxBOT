@@ -6,4 +6,4 @@ var groupId = function() {
     return "group id"
 }
 
-exports.stats = stats;
+exports.groupId = groupId;
