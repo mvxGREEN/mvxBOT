@@ -5,14 +5,14 @@ var find = require('./find.js');
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(^|.)CSSA Bot(.|$)/i,
+      botRegex = /(^|.)xxxBOT(.|$)/i,
       mentionRegex = /(^|.)(@all|@everyone)(.|$)/i
       statsRegex = /(^|.)@stats(.|$)/i
       groupIdRegex = /(^|.)@groupId(.|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage(":)");
+    postMessage("aye");
     this.res.end();
   } else if(request.text && mentionRegex.test(request.text)) {
     this.res.writeHead(200);
