@@ -1,11 +1,13 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
-var mention = require('./mention.js');
+var mention = require('./mention.js')
+var find = require('./find.js');
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(^|.)CSSA Bot(.|$)/i,
-      mentionRegex = /(^|.)(@all|@everyone)(.|$)/i;
+      mentionRegex = /(^|.)(@all|@everyone)(.|$)/i
+      statsRegex = /(^|.)@stats(.|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -14,6 +16,10 @@ function respond() {
   } else if(request.text && mentionRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(mention.all());
+    this.res.end();
+  } else if(request.text && statsRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage(find.stats());
     this.res.end();
   } else {
     console.log("don't care");
