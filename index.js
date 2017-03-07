@@ -29,5 +29,5 @@ server.listen(port);
 
 function ping() {
   this.res.writeHead(200);
-  this.res.end("CSSA Bot running.");
+  this.res.end("xxxBOT is running.");
 }
