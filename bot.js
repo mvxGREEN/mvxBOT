@@ -5,16 +5,11 @@ var mention = require('./mention.js');
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(^|\s)CSSA Bot(\s|$)/i,
-      hiRegex = /(^|\s)hi(\s|$)/i,
-      allRegex = /(^|\s)all(\s|$)/i;
+      mentionRegex = /(^|\s)(@all|@everyone)(\s|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(":)");
-    this.res.end();
-  } else if(request.text && hiRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage("Hello");
     this.res.end();
   } else if(request.text && allRegex.test(request.text)) {
     this.res.writeHead(200);
