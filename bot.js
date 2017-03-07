@@ -11,7 +11,7 @@ function respond() {
     this.res.writeHead(200);
     postMessage(":)");
     this.res.end();
-  } else if(request.text && allRegex.test(request.text)) {
+  } else if(request.text && mentionRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(mention.all());
     this.res.end();
