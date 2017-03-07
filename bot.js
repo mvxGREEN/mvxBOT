@@ -4,8 +4,8 @@ var mention = require('./mention.js');
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(^|\s)CSSA Bot(\s|$)/i,
-      mentionRegex = /(^|\s)(@all|@everyone)(\s|$)/i;
+      botRegex = /(^|.)CSSA Bot(.|$)/i,
+      mentionRegex = /(^|.)(@all|@everyone)(.|$)/i;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
